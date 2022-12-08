@@ -14,7 +14,7 @@ dateFormat = "2 January 2006"
 
 [author]
   name = "Remy Jaspers"
-# image = "img/author.jpg"
+image = "img/author.jpg"
   headline = "Student Information Security Technology at TU Eindhoven"
 bio = "This is an example author bio, and although there's a stock photo of a dog here, this article was actually created by a human. :dog:"
   links = [
