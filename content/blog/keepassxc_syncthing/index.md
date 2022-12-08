@@ -1,16 +1,10 @@
 ---
 title: "KeepassXC + SyncThing = :heart:"
-date: 2019-12-07
 description: How to synchronize a KeepassXC database across devices.
 tags: ["cyber security", "password management"]
 ---
 
-TLDR; Learn how to synchronize KeepassXC databases across devices and regain ownership of your data.
-
-<!--more-->
-
-{{< katex >}}
-
+Learn how to use SyncThing to synchronize KeepassXC databases across devices and regain ownership of your data.
 
 ## Introduction
 
@@ -58,7 +52,7 @@ prebuilt packages.
 Setting it up on Android is as easy as installing the app from the [Google Play Store](https://play.google.com/store/apps/details?id=com.nutomic.syncthingandroid).
 
 If you have installed SyncThing on all your devices, synchronizing is as easy as loading up the Web UI and pointing it at the folder
-you wish to continuously synchronize between devices: ![](images/syncthing_ui.png)
+you wish to continuously synchronize between devices: ![](syncthing_ui.png)
 
 Put your password database file "*.kdbx" in this folder (/home/rj/Sync/ in my case) and you are all set! You can easily add new devices through this Web UI,
 by clicking the "Add Remote Device". The interface will reflect the synchronization status so you can check whether your folder
