@@ -58,9 +58,11 @@ These are the first clues as to which version of GandCrab we are dealing with, a
 
 ## Dynamic Analysis
 
+At the start of the investigation, the binary is being run without attaching a debugger. Using [Sysinternals Process Monitor](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon), a close eye is kept on any processes that are being spawned, the creation of registry keys, and potential network traffic. From this a graph has been plotted (see above) by [PROCdot](https://www.procdot.com/) which creates a visual representation of how the malware executes (enlarge for full view). 
+
 ![Execution Flow](img/gc_execflow.png)
 
-At the start of the investigation, the binary is being run without attaching a debugger. Using [Sysinternals Process Monitor](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon), a close eye is kept on any processes that are being spawned, the creation of registry keys, and potential network traffic. The following registry key is created:
+The creation of the following registry key is observed:
 
 > HKCU\Software\Microsoft\Windows\Currentversion\RunOnce\iqggkpqyopu
 
@@ -77,7 +79,7 @@ It is most likely that this executable is run on startup as a persistence mechan
 
 After these events take place, GandCrab attempts to terminate common antivirus solutions. The following list of solutions is searched for (decompiled using [Ghidra](https://ghidra-sre.org/)):
 
-![Antivirus processes to terminate](img/disable_antivirus.png)
+![Antivirus processes to terminate](img/disable_antivirus.png?width=200px)
 
 When persistence is established and anti-virus solutions are out of the way, the executable starts sending DNS requests every 2 to 3 seconds:
 
@@ -101,10 +103,30 @@ Additionally, HTTP POST requests are observed to these domains:
 > 
 > data=mdU+mIEkDgfqAIOO+CErOIcj/44TH/51A4H
 
-The base64 encoded body is encrypted and does not reveal any information. 
+The base64 encoded body is encrypted and does not reveal any information. Encryption is likely applied to the body
+to obfuscate communcation with a C2 server. The next step is to uncover which algorithm is used for this communication
+between the ransomware binary and the C2 server.
 
-![RC4 key scheduling and pseudo-random generation algorithm](img/rc4.png)
-![RC4 key](img/rc4key.png)
+After some more reverse engineering in [IDA](https://hex-rays.com/ida-free/), the greatest reversing tool in existence, 
+the following functions have been narrowed down, which bear resemblance to an RC4 key scheduling algorithm (KSA),
+as well as the pseudo-random generation algorithm (PRGA). The output of the KSA is used as input to the PRGA,
+to generate a keystream. To obtain encrypted ciphertext, this keystream is XOR'ed with the plaintext. 
+RC4 uses a substitution box of 256 elements which undergoes multiple permutations before
+generating the keystream (notice the hex value of 100h = 256 decimal).
+
+
+![RC4 key scheduling and pseudo-random generation algorithm](img/rc4.png?height=10px)
+
+By setting breakpoints in these routines, and observing the memory regions they reference,
+we see that the value "areidjD#shasj" is repeatedly written to memory:
+
+![RC4 key](img/rc4key.png?width=100px)
+
+It was hypothesized at this point that this was the RC4 keystream that has been generated to encrypt the body of the
+HTTP POST request. Indeed, after running [CyberChef](https://gchq.github.io/CyberChef/), 
+with base64 decoding, RC4 decryptor, and UTF16-LE to make the output more legible, we get the 
+following output:
+
 
 > action=call  
 > &pc_user=IEUser  
@@ -121,3 +143,107 @@ The base64 encoded body is encrypted and does not reveal any information.
 > &pub_key=BgIAAACkAABSU0ExAAgAAAEAAQCBo  
 > &priv_key=BwIAAACkAABSU0EyAAgAAAEAAQCB  
 > &version=2.3r
+
+This gives a nice overview of what data is being sent to the C2 server, such as basic details of the
+host, antivirus solution in use, language (some types of ransomware refuse to encrypt PC's with certain languages).
+We also observe some base64 encoded private and public key that I will return to later. The last line of the
+decrypted body shows that we are actually dealing with internal version 2.3r of the GandCrab ransomware.
+
+At the time of writing, the GandCrab domains associated with this sample have been taken down. 
+During analysis, a routine was observed that POSTs in a loop every 10 seconds:
+
+![POST routing](img/post_loop.png?width=100px)
+
+When the binary does not receive a response for this request, it does not continue execution. Since it is impossible
+to know what response the binary expects, it has been patched to continue executing even without a response. This
+allows to fully analyze the binary. 
+
+Next to closing antivirus solutions, GandCrab also closes processes of software that may lock some files
+and/or hinder the encryption of all files:
+
+|                |        |    |
+|----------------------------|------------------------|-----------------|
+| msftesql.exe               | ocautoupds.exe         | msaccess.exe    |
+| sqlagent.exe               | agntsvc.exeagntsvc.exe | mspub.exe       |
+| sqlbrowser.exe             | agntsvc.exencsvc.exe   | onenote.exe     |
+| sqlservr.exe               | firefoxconfig.exe      | outlook.exe     |
+| sqlwriter.exe              | tbirdconfig.exe        | powerpnt.exe    |
+| oracle.exe                 | ocomm.exe              | steam.exe       |
+| ocssd.exe                  | mysqld.exe             | sqlservr.exe    |
+| dbsnmp.exe                 | mysqld-nt.exe          | thebat.exe      |
+| synctime.exe               | mysql-opt.exe          | thebat64.exe    |
+| mydesktopqos.exe           | dbeng50.exe            | thunderbird.exe |
+| agntsvc.exeisqlplussvc.exe | sqbcoreservice.exe     | visio.exe       |
+| xfssvccon.exe              | excel.exe              | winword.exe     |
+| mydesktopservice.exe       | infopath.exe           | wordpad.exe     |
+
+Encrypting some specific files would render a computer unbootable, which would
+make it impossible to display the ransom note and demand a ransom from the victim.
+To deal with this, GandCrab also excludes certain directories and special files:
+
+![Exlusion Dirs](img/excluded_dirs.png?width=100px)
+
+## File Encryption
+
+The very purpose of the ransomware is to encrypt all files and demand a ransom. Up to the encryption process,
+may steps have been taken to establish a proper foothold on the system. By now, GandCrab has added registry
+keys for persistence and crucial information has been gathered from the compromised system. Soon after,
+DNS lookups are made to find C2 servers. Obstructive processes are terminated, and exclusion lists are used
+so that no files are encrypted that render the system unbootable. 
+
+To investigate the encryption process, the cryptography-related API calls have been further inspected. This leads
+us to the following function:
+
+![RSA](img/rsa_keygen_function.png?width=50px)
+
+Here a call to CryptGenKey is made, with argument hex value 0xA400, corresponding to *CALG_RSA_KEYX*.
+This indicates that we are dealing with the (asymmetric) RSA encryption algorithm, relating to the private/public keys
+observed before. As asymmetric encryption is generally considered to be too slow for file encryption, we also suspect
+the use of other (symmetric) stream or block ciphers such as AES. Unfortunately, all crypto-related calls observed point to the usage
+of RSA. This leaves two options, either our hypothesis that a symmetric cipher is used is wrong, or the malware authors
+use a handcrafted or uncommon implementation of a symmetric cipher. 
+
+At some point, the ransomware is going to write encrypted files to the file system. What about working backwards from
+the file writing routines, in the hope to encover the encryption scheme that is used just before that? We set multiple
+breakpoints at any *WriteFile* calls that are made. Working backwards leads us to the following routine:
+
+![Generation of Key](img/encrypt_write_files.png?width=50px)
+
+Here we see that files are read in chunks of 0x1000000 bytes (approx 1 Mb). Thereafter, two chunks of 0x100 (256 decimal)
+and 0x10 (16 decimal) bytes are appended to the written file. Working further backwards, using the Windows documentation,
+the following function was found:
+
+![CryptGenRandom](img/aes_key_init.png?width=100px)
+
+It seems here *CryptGenRandom* call is used which is referenced by *advapi32.dll*. It fills a buffer of size *dwLen* with random
+bytes. This routine is called twice with different arguments for the first parameter. After these calls, multiple 
+complex routines are called that bear resemblance to substitution-permutation networks as are common in symmetric ciphers.
+Although it is difficult to confirm, the routines are very likely some form of AES encryption. After the files are encrypted,
+the file-specific key and initialization vector (IV) are appended to the encrypted file. The key and IV are themselves encrypted
+with the RSA keys. This only allows decryption of the files with the RSA private key. 
+
+After encrypting the entire system in this fashion, GandCrab removes any shadow copies, preventing the user from restoring
+the system to a working state:
+
+![Shadow Copies](img/shadowcopy_delete.png?width=50px)
+
+The system reboots itself after a while and GandCrab starts again through the persistence mechanisms as previously described.
+The user will be presented with the ransomware note on how to pay the ransom to recover from the infection. 
+
+## Sidenote
+
+After decrypting the RSA keys with the RC4 key, an attempt has been made to use these keys to decrypt a file with known
+contents (e.g. a text file containing a known phrase). After running GandCrab, the encrypted file was compared to the
+unencrypted file. Using a Python script, an attempt has been made to extract the purported key and IV from the encrypted
+file. The goal was to decrypt the file using the decrypted key and IV. Unfortunately, after extensive trials, this proved to be
+impossible. Version 1 of GandCrab had a flaw where the RSA private key would be saved to a registry entry directly.
+This unfortunately was patched in the sample that has been analyzed. To the best of our knowledge, no decryptor exists
+for GandCrab v2 or any of its subversions.
+
+## Conclusion
+
+GandCrab is a sophisticated piece of malware that throws multiple curveballs to hinder analysis. It was at the root
+of many newer versions of increasingly sophisticated malware versions, such as GandCrab v4, v5 and the Sodinokibi 
+ransomware. Each and every version has been improved and hardened by its authors against reverse engineering.
+All in all, this was a great assignment and I learned a lot! I'm looking forward
+to dissecting more malware in the future :smile:!
