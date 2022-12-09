@@ -5,7 +5,7 @@ draft: false
 tags: ["cyber security", "malware analysis"]
 ---
 
-A university assignment to analyse a GandCrab ransomware sample.
+In a university assignment, I was tasked with reversing GandCrab malware.
 
 ## Introduction
 
@@ -242,8 +242,7 @@ for GandCrab v2 or any of its subversions.
 
 ## Conclusion
 
-GandCrab is a sophisticated piece of malware that throws multiple curveballs to hinder analysis. It was at the root
-of many newer versions of increasingly sophisticated malware versions, such as GandCrab v4, v5 and the Sodinokibi 
+GandCrab is a sophisticated piece of malware that is at the root of more advanced malware versions such as GandCrab v4, v5 and the Sodinokibi 
 ransomware. Each and every version has been improved and hardened by its authors against reverse engineering.
 All in all, this was a great assignment and I learned a lot! I'm looking forward
 to dissecting more malware in the future :smile:!
