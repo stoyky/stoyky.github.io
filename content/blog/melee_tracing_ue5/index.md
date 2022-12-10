@@ -284,7 +284,7 @@ Tick Type" from "Queue" to "Branching Point". Save the montage and return to the
 
 ## Conclusion
 
-It's time to view the accurate melee tracing in all its glory:
+Start the game because it is time to view the accurate melee tracing in all its glory:
 
 ![Kwang](img/screenshot.png)
 

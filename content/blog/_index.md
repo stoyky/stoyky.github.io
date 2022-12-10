@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-description: "See what's possible with Congo."
+description: ""
 
 cascade:
   showEdit: false
@@ -8,3 +8,4 @@ cascade:
 ---
 
 Welcome to my blog, where I write about various things that interest me, security-related or otherwise. 
+If you are interested in a particular subject, go to the Tags menu and you can view posts per category.
