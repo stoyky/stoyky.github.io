@@ -26,7 +26,7 @@ Whenever I encounter some cool game mechanic such as building / inventory system
 in C++ (instead of the visual programming "Blueprints") for maximum performance. For one game prototype,
 I recreated an accurate melee mechanic that I observed in the first-person sword fighting game "Mordhau":
 
-![Mordhau](https://www.youtube.com/watch?v=p-B4AwgArwA)
+{{< youtube p-B4AwgArwA>}}
 
 I implemented this and was surprised how little code was actually needed to create such a cool game mechanic!
 
@@ -258,7 +258,7 @@ void UMeleeAnimNotification::BranchingPointNotifyTick(FBranchingPointNotifyPaylo
 }
 ```
 When the animation notification ends, we do some cleanup to empty out the vectors that were used in the
-tracing, and notify to the SkeletalMeshComopnent that the animation has ended.
+tracing, and notify to the SkeletalMeshComponent that the animation has ended.
 ```C
 void UMeleeAnimNotification::BranchingPointNotifyEnd(FBranchingPointNotifyPayload& BranchingPointPayload)
 {
@@ -276,11 +276,14 @@ void UMeleeAnimNotification::BranchingPointNotifyEnd(FBranchingPointNotifyPayloa
 ## Setting up the animation notifications
 
 Finally we got to the fun part: setting up the animation notifications in the actual animations.
-Go to the content drawer and open the "PrimaryAttack_C_slow_Montage". Under the "Notifies" track,
+Go to the content drawer and open the "PrimaryAttack\_C\_slow_Montage". Under the "Notifies" track,
 add a new notification track. Then right click on the track, add "Anim Notify State" and select our
 "Melee Anim Notification". Extend it for as long as you wish the MeleeTrace() to trace for during
 the animation. One important part left! In the right "Details" pane, make sure to switch the "Montage
 Tick Type" from "Queue" to "Branching Point". Save the montage and return to the main viewport.
+
+## Conclusion
+
 It's time to view the accurate melee tracing in all its glory:
 
 ![Kwang](img/screenshot.png)
