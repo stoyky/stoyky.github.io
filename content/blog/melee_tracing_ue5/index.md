@@ -63,7 +63,7 @@ click next and call it MeleeCharacter:
 If all went well Visual Studio should pop up with the class you just created. Before we can add code to this
 class, we need to reparent the character we already have in the game. Search in the content drawer for 
 "AnimationTestMap" and open this. It will present you with an empty map only containing the Kwang character.
-Hitting the left mouse button will start some attacking animations on the kwang character so you can see
+Hitting the left mouse button will start some attacking animations on the Kwang character so you can see
 how it looks:
 
 ![Map](img/map.PNG)
@@ -77,7 +77,7 @@ In the right pane, make sure to set the "MeleeCharacter" class as the parent of 
 ![Reparent](img/reparent.PNG)
 
 While you are at the event graph of the KwangPlayerCharacter, make a connection from the SwitchOnInt 0 node to the
-third animation (the node that plays PrimaryAttack_C_slow_montage). This is to make sure the character plays only
+third animation (the node that plays PrimaryAttack\_C\_slow\_montage). This is to make sure the character plays only
 a single animation, which is nice for testing:
 
 ![EG](img/eventgraph.PNG)
@@ -105,7 +105,7 @@ The following code snippet is the code that needs to be added to the MeleeCharac
 ![Melee implementation](img/melee_implementation.PNG)
 
 The first part of the code gets a reference to the player controller, since we need a reference
-to it to determine where to apply collision, amongst others.
+to it to determine where to apply collision.
 ```C
 void AMeleeCharacter::MeleeTrace() {	
 	APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0);
@@ -119,8 +119,10 @@ The following code sets up the necessary arrays of vectors for the melee traces.
 We get references to the *FX_weapon_base* and *FX_weapon_tip* sockets that are
 already present in the character skeletal mesh of the Kwang character. This
 determines between which two points we want to start tracing. We need this so
-that the line traces to precisely follow the motion of the melee weapon. 
-We push the first vectors for tracing so that at least a single trace is made.
+that the line traces precisely follow the motion of the melee weapon. 
+We push the first vector for tracing so that at least a single trace is made.
+The MeleeVectorDirection is normalized so that we can determine the direction
+of the vectors between the base and the tip of the weapon to trace between.
 ```C
 		TArray<FVector> MeleeTrace;
 		FVector MeleeTraceBottom = GetMesh()->GetSocketLocation("FX_weapon_base");
@@ -192,18 +194,17 @@ will draw some debug lines to visualize the motion of the line traces.
 ## Custom animation notifications in C++
 Now, we could call this MeleeTrace() function at every tick which would start
 tracing all movement of the sword infinitely. Ofcourse this is computationally expensive,
-inaccurate, and unnecessary. To this end, we create custom [Animation Notifications](https://docs.unrealengine.com/4.27/en-US/AnimatingObjects/SkeletalMeshAnimation/Sequences/Notifies/). 
+inaccurate, and unnecessary. To do this, we can create custom [Animation Notifications](https://docs.unrealengine.com/4.27/en-US/AnimatingObjects/SkeletalMeshAnimation/Sequences/Notifies/). 
 
 The basic premise of Animation Notifications is that we can make animations in a game
 drive certain events. These are perfect in this instance, where we want to control
 precisely how long we want to trace the motion of the character. Running MeleeTrace()
-for the entire duration of the animation will often be too imprecise. To this end, 
-we will add a new class (the last one, I promise) that inherits from the "Animation Notify State" class 
-so that we can implement these in C++. Call this class "MeleeAnimNotifyState":
+for the entire duration of the animation will often be too imprecise. Let's add a new class (the last one, I promise) 
+that inherits from the "Animation Notify State" class so that we can implement these in C++. 
 
 ![Anim notify](img/animnotifyclass.PNG)
 
-Call this 
+Call this class "MeleeAnimNotifyState":
 
 ![Notify](img/meleeanimnotifystate.PNG)
 
@@ -241,8 +242,8 @@ void UMeleeAnimNotification::BranchingPointNotifyBegin(FBranchingPointNotifyPayl
 }
 
 ```
-The following code determines what needs to be done on every tick, as long as the animation notification plays out.
-We get a reference to our MeleeCharacter, run MeleeTrace() for every tick and send a notification to the SkeletalMeshComponent.
+The following code determines what needs to be done at every game tick, as long as the animation notification plays out.
+We get a reference to our MeleeCharacter, run MeleeTrace() for every notification tick and send a notification to the SkeletalMeshComponent.
 ```C
 void UMeleeAnimNotification::BranchingPointNotifyTick(FBranchingPointNotifyPayload& BranchingPointPayload, float FrameDeltaTime)
 {
@@ -258,7 +259,7 @@ void UMeleeAnimNotification::BranchingPointNotifyTick(FBranchingPointNotifyPaylo
 }
 ```
 When the animation notification ends, we do some cleanup to empty out the vectors that were used in the
-tracing, and notify to the SkeletalMeshComponent that the animation has ended.
+tracing, and notify the SkeletalMeshComponent that the animation has ended.
 ```C
 void UMeleeAnimNotification::BranchingPointNotifyEnd(FBranchingPointNotifyPayload& BranchingPointPayload)
 {
