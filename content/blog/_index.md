@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-description: "See what's possible with Congo."
+description: ""
 
 cascade:
   showEdit: false
