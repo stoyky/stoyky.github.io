@@ -290,10 +290,3 @@ Start the game because it is time to view the accurate melee tracing in all its 
 ![Kwang](img/melee.gif)
 
 Loot at him go, what a legend!
-
-
-
-
-
-
-
