@@ -283,7 +283,7 @@ the animation. One important part left! In the right "Details" pane, make sure t
 Tick Type" from "Queue" to "Branching Point". Save the montage and return to the main viewport.
 It's time to view the accurate melee tracing in all its glory:
 
-![Kwang](img/screenshot.png)
+![Kwang](img/melee.gif)
 
 Loot at him go, what a legend!
 
