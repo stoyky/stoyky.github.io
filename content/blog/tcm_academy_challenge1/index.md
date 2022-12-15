@@ -5,7 +5,7 @@ draft: false
 tags: ["cyber security", "malware analysis"]
 ---
 
-First challenge of the TCM Academy Practical Malware Analysis course.
+First challenge of the TCM Academy Practical Malware Analysis and Triage course.
 
 ## Introduction
 
