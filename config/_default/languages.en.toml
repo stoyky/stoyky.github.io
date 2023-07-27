@@ -8,7 +8,7 @@ rtl = false
 title = "About"
 # logo = "img/logo.jpg"
 # description = "A powerful, lightweight theme for Hugo built with Tailwind CSS."
-copyright = "&copy; 2022"
+copyright = "&copy; 2023"
 
 dateFormat = "2 January 2006"
 
