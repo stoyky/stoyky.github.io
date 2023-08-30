@@ -103,11 +103,11 @@ Looking at the graph visualization, there are two flows for this function. The l
 
 ![](img/wannacry_deadend.png)
 
-We reverse the jne instruction prior to the branch so that it takes the left path with the call in it. Now that the jump is taken to the left path, and let it run, the binary proceeds to run as intended and encrypts the device. We can play with this killswitch mechanism to either probe into wannacry further or to disarm it. 
+We reverse the jne instruction prior to the branch so that it takes the left path with the call in it. Now that the jump is taken to the left path, and let it run, the binary proceeds to run as intended and encrypts the device. We can play with this killswitch mechanism to either probe into wannacry further or to disarm it. This wraps up the challenge and the associated questions for PMAT.
 
 ## Conclusion
 
-This was a cool challenge, and exposure to a real binary is so much more educational than disarmed, defanged practice binaries. I will sure take up more malware RE when I have time on my hands!
+This was a cool challenge, and exposure to a real binary is so much more educational than disarmed, practice binaries. I will sure take up more malware RE when I have time on my hands!
 
 
 
