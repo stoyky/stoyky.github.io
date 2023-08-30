@@ -1,5 +1,5 @@
 ---
-title: "PMAT Bossfight: Wannacry"
+title: "PMAT Challenge 3: Wannacry Bossfight"
 description: Wannacry
 draft: false
 tags: ["cyber security", "malware analysis"]
