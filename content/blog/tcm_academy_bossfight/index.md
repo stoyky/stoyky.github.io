@@ -1,11 +1,11 @@
 ---
-title: "PMAT Challenge 2: SikoMode"
-description: SikoMode
+title: "PMAT Bossfight: Wannacry"
+description: Wannacry
 draft: false
 tags: ["cyber security", "malware analysis"]
 ---
 
-Second challenge of the TCM Academy Practical Malware Analysis and Triage course.
+Bossfight challenge of the TCM Academy Practical Malware Analysis and Triage course.
 
 ## Introduction
 
