@@ -59,12 +59,7 @@ being created, sent and encrypted. These might prove good breaking points during
 
 
 ## Dynamic Analysis
-- Record any observed symptoms of infection from initial detonation. What are the main symptoms of a WannaCry infection?
-- What conditions are necessary to get this sample to detonate?
-- **Network Indicators**: Identify the network indicators of this malware
-- **Host-based Indicators**: Identify the host-based indicators of this malware. 
-- Use Cutter to locate the killswitch mechanism in the decompiled code and explain how it functions.
-## Conclusion
+
 As per usual, we fire up REMnux with an INetSim listener to listen for potential DNS requests, HTTP requests or other traffic that the binary generates. After a quick snapshot of the VM we detonate the binary and... nothing happens. Or has there? Switching over to Wireshark in REMnux we observe an interesting HTTP GET request:
 
 ![](img/wannacry_callback.jpeg)
