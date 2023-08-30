@@ -55,23 +55,23 @@ Looking further at potentially interesting imports in the IAT table, we observe 
 ![](img/wannacry_iat.jpeg)
 
 As well as calls to InternetOpen, CreateFile and other calls that indicate that files are
-being created, sent and encrypted. These might prove good breaking points during dynamic analysis. Now we move on the dynamic analysis to ellicit more interesting behavior from this piece of malware. 
+being created, sent and encrypted. These might prove good breaking points during dynamic analysis. Now we move on to the dynamic analysis to ellicit more interesting behavior from this piece of malware. 
 
 
 ## Dynamic Analysis
 
-As per usual, we fire up REMnux with an INetSim listener to listen for potential DNS requests, HTTP requests or other traffic that the binary generates. After a quick snapshot of the VM we detonate the binary and... nothing happens. Or has there? Switching over to Wireshark in REMnux we observe an interesting HTTP GET request:
+As per usual, we fire up REMnux with an INetSim listener to listen for potential DNS requests, HTTP requests or other traffic that the binary generates. After a quick snapshot of the VM we detonate the binary and... nothing happens. Or did we miss it? Switching over to Wireshark in REMnux we observe an interesting HTTP GET request:
 
 ![](img/wannacry_callback.jpeg)
 
-Intuitively this looks like a killswitch domain. It looks like the malware fails
+Intuitively this looks like a callback domain. It looks like the malware fails
 to detonate as long as a connection can be made to this URL. So, we disable
 INetSim and try again, and indeed we wanna cry:
 
 ![](feature-wannacry.png)
 ![](img/wannacry_decryptor.png)
 
-Looking at ProcMon we see that a file named "tasksche.exe" is written to the windows folder, perhaps this is a persistence mechanism? We akso observe a bunch of WriteFile operations to a particular directory:
+Looking at ProcMon we see that a file named "tasksche.exe" is written to the Windows folder, perhaps this is a persistence mechanism? We also observe a bunch of WriteFile operations to a particular directory:
 
 
 ![](img/wannacry_procmon.png)
@@ -89,16 +89,16 @@ In addition, a plethora of TCP connections are observed:
 Ofcourse we are immediately observing host-based indicators such as the ransomware note, all files being encrypted with the WNCRY extension, as well as the friendly handshake decryptor. Let's revert back to a predetonated state
 and investigate this more thoroughly.
 
-Let's fire up Cutter to find out more about the killswitch mechanism. No time is wasted and we immediately set breakpoints on the InternetOpenA calls to see if we can intercept a ppssible callback
-to the callback domain . Interestingly, not far into the main function, we observe the URL
+Let's fire up Cutter to find out more about the killswitch mechanism. No time is wasted and we immediately set breakpoints on the main and InternetOpenA calls to see if we can intercept a ppssible callback
+to the callback domain. Interestingly, not far into the main function, we observe the URL
 
-<!-- <!-- ![](img/wannacry_main.png) -->
+![](img/wannacry_main.png)
 
 Looking at the graph visualization, there are two flows for this function. The left function calls other functions, whereas the other seems to return directly. It is likely that the left path is executed on a succesful callback connection, whereas the other path stops the binary from executing futher.
 
 ![](img/wannacry_deadend.png)
 
-We reverse the jne instruction prior to the branch so that it takes the left path with the call in it. Now that the jump is taken to the left path, and let it run, the binary proceeds to run as intended and encrypts the device. We can play with this killswitch mechanism to either probe into wannacry further or to disarm it. This wraps up the challenge and the associated questions for PMAT.
+We reverse the jne instruction prior to the branch so that it takes the left path with the function call in it. Now that the jump is taken to the left path, the binary proceeds to run as intended and encrypts the system. We can play with this killswitch mechanism to either probe into Wannacry further or to disarm it. This wraps up the challenge and the associated questions for PMAT.
 
 ## Conclusion
 
