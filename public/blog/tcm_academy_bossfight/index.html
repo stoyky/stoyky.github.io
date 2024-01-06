@@ -19,10 +19,10 @@
   <meta name="theme-color" content="rgb(255,255,255)" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>PMAT Challenge 2: SikoMode &middot; About</title>
-    <meta name="title" content="PMAT Challenge 2: SikoMode &middot; About" />
+  <title>PMAT Challenge 3: Wannacry Bossfight &middot; About</title>
+    <meta name="title" content="PMAT Challenge 3: Wannacry Bossfight &middot; About" />
   
-  <meta name="description" content="SikoMode" />
+  <meta name="description" content="Wannacry" />
   
   
   
@@ -70,17 +70,17 @@
   
   
   
-  <meta property="og:title" content="PMAT Challenge 2: SikoMode" />
-<meta property="og:description" content="SikoMode" />
+  <meta property="og:title" content="PMAT Challenge 3: Wannacry Bossfight" />
+<meta property="og:description" content="Wannacry" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/tcm_academy_bossfight/" /><meta property="og:image" content="/blog/tcm_academy_bossfight/feature-wannacry.png"/><meta property="article:section" content="blog" />
+<meta property="og:url" content="/blog/tcm_academy_bossfight/" /><meta property="og:image" content="/blog/tcm_academy_bossfight/feature-wannacry.png" /><meta property="article:section" content="blog" />
 
 
 
-  <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="/blog/tcm_academy_bossfight/feature-wannacry.png"/>
-<meta name="twitter:title" content="PMAT Challenge 2: SikoMode"/>
-<meta name="twitter:description" content="SikoMode"/>
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="/blog/tcm_academy_bossfight/feature-wannacry.png" /><meta name="twitter:title" content="PMAT Challenge 3: Wannacry Bossfight"/>
+<meta name="twitter:description" content="Wannacry"/>
 
   
   <script type="application/ld+json">
@@ -88,10 +88,10 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "Blog",
-    "name": "PMAT Challenge 2: SikoMode",
-    "headline": "PMAT Challenge 2: SikoMode",
-    "description": "SikoMode",
-    "abstract": "Second challenge of the TCM Academy Practical Malware Analysis and Triage course.",
+    "name": "PMAT Challenge 3: Wannacry Bossfight",
+    "headline": "PMAT Challenge 3: Wannacry Bossfight",
+    "description": "Wannacry",
+    "abstract": "Bossfight challenge of the TCM Academy Practical Malware Analysis and Triage course.",
     "inLanguage": "en-us",
     "url" : "\/blog\/tcm_academy_bossfight\/",
     "author" : {
@@ -107,7 +107,7 @@
     "keywords": ["cyber security","malware analysis"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "827"
+    "wordCount": "774"
   }]
   </script>
 
@@ -227,7 +227,7 @@
     <a
       class="hover:underline decoration-neutral-300 dark:underline-neutral-600"
       href="/blog/tcm_academy_bossfight/"
-      >PMAT Challenge 2: SikoMode</a
+      >PMAT Challenge 3: Wannacry Bossfight</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -236,7 +236,7 @@
 
       
       <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-        PMAT Challenge 2: SikoMode
+        PMAT Challenge 3: Wannacry Bossfight
       </h1>
       <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
         
@@ -269,7 +269,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <span title="Reading time">4 mins</span>
+      &lt;span title=&#34;Reading time&#34;&gt;4 mins&lt;/span&gt;
     
 
     
@@ -316,7 +316,6 @@
     <li><a href="#static-analysis">Static Analysis</a></li>
     <li><a href="#dynamic-analysis">Dynamic Analysis</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
-    <li><a href="#conclusion-1">Conclusion</a></li>
   </ul>
 </nav>
   </div>
@@ -326,7 +325,7 @@
         </div>
       
       <div class="min-w-0 min-h-0 max-w-prose grow">
-        <p>Second challenge of the TCM Academy Practical Malware Analysis and Triage course.</p>
+        <p>Bossfight challenge of the TCM Academy Practical Malware Analysis and Triage course.</p>
 <h2 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h2>
 <p><a
   href="https://academy.tcm-sec.com/"
@@ -427,17 +426,9 @@ Disk Defragmentation binary.</p>
 
 </p>
 <p>As well as calls to InternetOpen, CreateFile and other calls that indicate that files are
-being created, sent and encrypted. These might prove good breaking points during dynamic analysis. Now we move on the dynamic analysis to ellicit more interesting behavior from this piece of malware.</p>
+being created, sent and encrypted. These might prove good breaking points during dynamic analysis. Now we move on to the dynamic analysis to ellicit more interesting behavior from this piece of malware.</p>
 <h2 id="dynamic-analysis" class="relative group">Dynamic Analysis <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#dynamic-analysis" aria-label="Anchor">#</a></span></h2>
-<ul>
-<li>Record any observed symptoms of infection from initial detonation. What are the main symptoms of a WannaCry infection?</li>
-<li>What conditions are necessary to get this sample to detonate?</li>
-<li><strong>Network Indicators</strong>: Identify the network indicators of this malware</li>
-<li><strong>Host-based Indicators</strong>: Identify the host-based indicators of this malware.</li>
-<li>Use Cutter to locate the killswitch mechanism in the decompiled code and explain how it functions.</li>
-</ul>
-<h2 id="conclusion" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a></span></h2>
-<p>As per usual, we fire up REMnux with an INetSim listener to listen for potential DNS requests, HTTP requests or other traffic that the binary generates. After a quick snapshot of the VM we detonate the binary and&hellip; nothing happens. Or has there? Switching over to Wireshark in REMnux we observe an interesting HTTP GET request:</p>
+<p>As per usual, we fire up REMnux with an INetSim listener to listen for potential DNS requests, HTTP requests or other traffic that the binary generates. After a quick snapshot of the VM we detonate the binary and&hellip; nothing happens. Or did we miss it? Switching over to Wireshark in REMnux we observe an interesting HTTP GET request:</p>
 <p>
 
 
@@ -467,7 +458,7 @@ being created, sent and encrypted. These might prove good breaking points during
   
 
 </p>
-<p>Intuitively this looks like a killswitch domain. It looks like the malware fails
+<p>Intuitively this looks like a callback domain. It looks like the malware fails
 to detonate as long as a connection can be made to this URL. So, we disable
 INetSim and try again, and indeed we wanna cry:</p>
 <p>
@@ -527,7 +518,7 @@ INetSim and try again, and indeed we wanna cry:</p>
   
 
 </p>
-<p>Looking at ProcMon we see that a file named &ldquo;tasksche.exe&rdquo; is written to the windows folder, perhaps this is a persistence mechanism? We akso observe a bunch of WriteFile operations to a particular directory:</p>
+<p>Looking at ProcMon we see that a file named &ldquo;tasksche.exe&rdquo; is written to the Windows folder, perhaps this is a persistence mechanism? We also observe a bunch of WriteFile operations to a particular directory:</p>
 <p>
 
 
@@ -646,9 +637,37 @@ INetSim and try again, and indeed we wanna cry:</p>
 </p>
 <p>Ofcourse we are immediately observing host-based indicators such as the ransomware note, all files being encrypted with the WNCRY extension, as well as the friendly handshake decryptor. Let&rsquo;s revert back to a predetonated state
 and investigate this more thoroughly.</p>
-<p>Let&rsquo;s fire up Cutter to find out more about the killswitch mechanism. No time is wasted and we immediately set breakpoints on the InternetOpenA calls to see if we can intercept a ppssible callback
-to the callback domain . Interestingly, not far into the main function, we observe the URL</p>
-<!-- <!-- ![](img/wannacry_main.png) -->
+<p>Let&rsquo;s fire up Cutter to find out more about the killswitch mechanism. No time is wasted and we immediately set breakpoints on the main and InternetOpenA calls to see if we can intercept a ppssible callback
+to the callback domain. Interestingly, not far into the main function, we observe the URL</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="mx-auto my-0 rounded-md"
+        
+          
+            srcset="/blog/tcm_academy_bossfight/img/wannacry_main_hu430fed0474cd7bca314ea9ce106cf5b4_1472344_330x0_resize_box_3.png 330w,/blog/tcm_academy_bossfight/img/wannacry_main_hu430fed0474cd7bca314ea9ce106cf5b4_1472344_660x0_resize_box_3.png 660w,/blog/tcm_academy_bossfight/img/wannacry_main_hu430fed0474cd7bca314ea9ce106cf5b4_1472344_1024x0_resize_box_3.png 1024w,/blog/tcm_academy_bossfight/img/wannacry_main_hu430fed0474cd7bca314ea9ce106cf5b4_1472344_1320x0_resize_box_3.png 2x"
+            src="/blog/tcm_academy_bossfight/img/wannacry_main_hu430fed0474cd7bca314ea9ce106cf5b4_1472344_660x0_resize_box_3.png"
+          
+        
+        alt=""
+        
+          loading="lazy"
+        
+      />
+      
+    </figure>
+  
+
+</p>
 <p>Looking at the graph visualization, there are two flows for this function. The left function calls other functions, whereas the other seems to return directly. It is likely that the left path is executed on a succesful callback connection, whereas the other path stops the binary from executing futher.</p>
 <p>
 
@@ -678,9 +697,9 @@ to the callback domain . Interestingly, not far into the main function, we obser
   
 
 </p>
-<p>We reverse the jne instruction prior to the branch so that it takes the left path with the call in it. Now that the jump is taken to the left path, and let it run, the binary proceeds to run as intended and encrypts the device. We can play with this killswitch mechanism to either probe into wannacry further or to disarm it.</p>
-<h2 id="conclusion-1" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion-1" aria-label="Anchor">#</a></span></h2>
-<p>This was a cool challenge, and exposure to a real binary is so much more educational than disarmed, defanged practice binaries. I will sure take up more malware RE when I have time on my hands!</p>
+<p>We reverse the jne instruction prior to the branch so that it takes the left path with the function call in it. Now that the jump is taken to the left path, the binary proceeds to run as intended and encrypts the system. We can play with this killswitch mechanism to either probe into Wannacry further or to disarm it. This wraps up the challenge and the associated questions for PMAT.</p>
+<h2 id="conclusion" class="relative group">Conclusion <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#conclusion" aria-label="Anchor">#</a></span></h2>
+<p>This was a cool challenge, and exposure to a real binary is so much more educational than disarmed, practice binaries. I will sure take up more malware RE when I have time on my hands!</p>
 
       </div>
     </section>
@@ -748,31 +767,14 @@ to the callback domain . Interestingly, not far into the main function, we obser
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="group flex" href="/blog/tcm_academy_challenge2/">
-              <span
-                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
-                ><span class="ltr:inline rtl:hidden">&larr;</span
-                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
-              >
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/blog/tcm_academy_challenge2/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
                   >PMAT Challenge 2: SikoMode</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-            <a class="group flex text-right" href="/blog/tcm_academy_challenge1/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >PMAT Challenge 1: SillyPutty</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
