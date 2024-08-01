@@ -163,7 +163,7 @@ while c.connected:
         time.sleep(0.1);
 ```
 
-Under normal operation, the color sorter works as intended, putting the metal, blue and green lids, and the small paper boxes in their respective bucket (sped up 4x for your viewing pleasure). Warning: please have some patience, the GIFs below may take a while to load. If you don't see anything yet, please refreshing the page. 
+Under normal operation, the color sorter works as intended, putting the metal, blue and green lids, and the small paper boxes in their respective bucket (sped up 4x for your viewing pleasure). Warning: please have some patience, the GIFs below may take a while to load. If you don't see anything yet, please refresh the page. 
 
 ![Normal Operation](img/normal_operation.gif)
 
