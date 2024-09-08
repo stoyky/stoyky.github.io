@@ -155,7 +155,7 @@ if __name__ == "__main_":
 
     mod.Write(path + "_cleaned", options)
 ```
-This script iterates through the binary and replaces all *ldstr* (load string) instructions and their operands with their decrypted equivalent. We immediately observe that this script already cleans up many of the encrypted strings and makes reverse engineering much less tedious. We go from this:
+This script iterates through the binary and replaces all *ldstr* (load string) IL instructions and their operands with their decrypted equivalent.  We go from this:
 
 ![](img/before.png)
 
@@ -163,7 +163,9 @@ To this:
 
 ![](img/after.png)
 
+We immediately observe that this script already cleans up many of the encrypted strings and makes reverse engineering much less tedious.
+
 ## Conclusion
-I had a blast during this CTF, and want to thank the colleagues who hosted it. Cheers!
+It was very satisfying seeing those decrypted lines show up after some experimentation. I had a blast during this CTF, and want to thank the colleagues who hosted it. Cheers!
 
 
