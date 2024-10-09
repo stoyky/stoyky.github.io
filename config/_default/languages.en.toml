@@ -1,7 +1,6 @@
 title = "About"
 copyright = "&copy; 2024"
 dateFormat = "2 January 2006"
-timeout = 3600
 
 [languages]
   [languages.en]
