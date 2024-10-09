@@ -4,6 +4,8 @@
 theme = "congo"
 defaultContentLanguage = "en"
 
+timeout = 100000
+
 enableRobotsTXT = true
 paginate = 15
 summaryLength = 0
