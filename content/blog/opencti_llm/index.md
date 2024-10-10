@@ -116,13 +116,24 @@ docker exec -it ollama ollama run mistral:instruct
 To check if you can send a prompt to your Ollama docker instance, issue the following command:
 
 ```
-curl -X POST http://localhost:11434/api/generate -d '{
-  "model": "mistral:instruct",
-  "prompt":"Here is a story about llamas eating grass"
- }'
+curl http://localhost:11434/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "mistral:instruct",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user",
+                "content": "Hello!"
+            }
+        ]
+    }'
 ```
 
-If all went well, your mistral LLM will start outputting completions token-by-token. 
+If all went well, your mistral LLM will return an answer: 
 
 ![](img/curl.png)
 
