@@ -29,7 +29,7 @@ mainSections = ["blog"]
 [homepage]
   layout = "profile" # valid options: page, profile, custom
   showRecent = true
-  recentLimit = 10
+  recentLimit = 20
 
 [article]
   showDate = false
