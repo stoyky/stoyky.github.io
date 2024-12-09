@@ -13,3 +13,6 @@ summaryLength = 0
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[imaging]
+  resampleFilter = "lanczos"
+  quality = 100

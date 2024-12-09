@@ -11,6 +11,7 @@ autoSwitchAppearance = true
 
 enableSearch = false
 enableCodeCopy = true
+enableImageWebp = true
 
 mainSections = ["blog"]
 # robots = ""
