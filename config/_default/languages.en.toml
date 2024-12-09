@@ -14,7 +14,7 @@ dateFormat = "2 January 2006"
 [author]
   name = "Remy Jaspers"
   image = "img/author.jpg"
-  headline = "Threat Intelligence Afficionado"
+  headline = "Threat Intelligence Afficionado - Data Science Enthusiast"
   links = [
     { linkedin = "https://www.linkedin.com/in/remy-jaspers/" },
     { twitter = "https://twitter.com/st0yky" },

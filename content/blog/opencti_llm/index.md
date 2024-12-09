@@ -1,5 +1,5 @@
 ---
-title: "Connecting OpenCTI to a Large Language Model: Leveraging the Ask AI feature"
+title: "Connecting OpenCTI to a Large Language Model pt. 1/2: Leveraging the Ask AI feature"
 description: How to hook OpenCTI to a LLM
 draft: false
 date: 2024-10-09T09:00:00+01:00

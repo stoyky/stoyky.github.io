@@ -7,7 +7,7 @@ publishDate: 2024-07-25T09:00:00+01:00
 tags: ["cyber security", "malware", "analysis", "functional", "stuxnet", "havex", "industroyer", "reverse engineering", "ICS", "OT", "FactoryIO", "hacking", "frostygoop"]
 ---
 
-A short functional analysis of the FrostyGoop ICS malware
+A short functional analysis of the FrostyGoop ICS malware.
 
 [Image Source](https://medium.com/@lithiumnetworks/new-ics-malware-frostygoop-targeting-critical-infrastructure-99b274725772)
 
