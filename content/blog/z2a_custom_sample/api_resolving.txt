@@ -1,0 +1,43 @@
+".5ea5/QPY4//"
+kernel32.dll
+
+"s9a4E5fbhe35n"
+FindResourceA
+
+"yb14E5fbhe35"
+LoadResource
+
+"F9m5b6E5fbhe35"
+SizeofResource
+
+"yb3.E5fbhe35"
+LockResource
+
+"I9egh1/n//b3"
+VirtualAlloc
+
+"pe51g5Ceb35ffn"
+CreateProcessA
+
+"t5gG8e514pbag5kg"
+GetThreadContext
+
+"E514Ceb35ffz5=bel"
+ReadProcessMemory
+
+"Je9g5Ceb35ffz5=bel"
+WriteProcessMemory
+
+"I9egh1/n//b3rk"
+VirtualAllocEx
+
+"F5gG8e514pbag5kg"
+SetThreadContext
+
+"E5fh=5G8e514"
+ResumeThread
+
+possible rc4 key: "kkd5YdPM24VBXmi"
+
+process hollowing, spawning main_bin.exe as a subprocess, injecting
+malicious code, and then resumes execution
