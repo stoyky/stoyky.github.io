@@ -16,7 +16,7 @@ dateFormat = "2 January 2006"
   image = "img/author.jpg"
   headline = "Threat Intelligence Afficionado - Data Science Enthusiast"
   links = [
-    { linkedin = "https://www.linkedin.com/in/remy-jaspers/" },
+    { linkedin = "https://www.linkedin.com/in/remyjaspers/" },
     { twitter = "https://twitter.com/st0yky" },
   ]
 
