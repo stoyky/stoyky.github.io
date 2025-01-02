@@ -4,7 +4,7 @@ description: Reverse engineering the Zero2Auto Malware Analysis course custom sa
 draft: false
 date: 2024-10-09T09:00:00+01:00
 publishDate: 2024-10-09T09:00:00+01:00
-tags: ["malware", "analysis", "zero2auto", "custom sample"]
+tags: ["malware", "analysis", "zero2auto", "custom sample", "cruloader"]
 ---
 
 Analyzing the Zero2Automated Course Cruloader custom sample.
@@ -13,7 +13,7 @@ Analyzing the Zero2Automated Course Cruloader custom sample.
 
 After finding out that a sequel existed for the Zero2Hero malware analysis course, I was hooked and wanted to learn more about advanced techniques such as injection, crypto algorithms in malware, writing config extractors, and emulating C2 protocols. Luckily the follow-up course Zero2Automated provides all this content and more. 
 
-Halfway during the course, a custom sample is provided for analysis. In this blogpost I will show how I analyzed this sample. I mainly used x64dbg, Ghidra for this analysis. 
+Halfway during the course, a custom sample is provided for analysis. In this blogpost I will show how I analyzed this sample. I mainly used x64dbg and Ghidra for this analysis by syncing imagebases, and occasionally PEstudio and PE-bear for static analysis or fixing memory dumps.
 
 ## The Cruloader sample
 
@@ -97,8 +97,6 @@ Luckily, the CRC32 hashes for the API calls have previously been calculated and 
 
 ![alt text](resolve_crc32_hashes.png)
 
-Paying close attention to the code, we see that ultimately an svchost.exe process is started. 
-![alt text](svchost.PNG)
 
 Moreover, we see calls to Pastebin to fetch data:
 
@@ -117,7 +115,7 @@ Which is ultimately dropped to disk in the users AppData\Local\Temp\cruloader fo
 
 ![alt text](cruloader_output.png)
 
-Ultimately, parts of this PNG file are decoded and XOR'ed with the key 0x61. 
+Finally, parts of this PNG file are decoded and XOR'ed with the key 0x61. 
 
 ![alt text](xor_61.png)
 
@@ -126,9 +124,7 @@ This leads to the next stage binary.
 ## Stage 3
 Dumping the last stage from memory leads us to a very small executable which is injected into a newly spawned svchost.exe process:
 
-![alt text](svchost-1.PNG)
-
-![alt text](svchost_injection-1.PNG)
+![alt text](svchost.PNG)
 
 This binary seemingly only shows us the following MessageBox:
 
