@@ -1,5 +1,5 @@
 ---
-title: "Zero2Automated Gozi String Decryption Challenge"
+title: "Zero2Automated Biweekly Challenge: Gozi Banking Trojan"
 description: Reverse engineering the Zero2Auto Malware Analysis course custom sample
 draft: false
 date: 2024-10-09T10:00:00+01:00
@@ -7,7 +7,7 @@ publishDate: 2024-10-10T09:00:00+01:00
 tags: ["malware", "analysis", "zero2auto", "custom sample", "cruloader"]
 ---
 
-Analyzing the Gozi ISFB banking trojan and decrypting strings for the biweekly challenge.
+Analyzing the Gozi ISFB banking trojan.
 
 ## Introduction
 
@@ -24,7 +24,7 @@ and the script I wrote to decrypt the encrypted data in the binary.
 | File name  | f28f39ada498d66c378fd59227e0f215.dll                                                      |
 |------------|------------------------------------------------------------------|
 | SHA256     | 0a66e8376fc6d9283e500c6e774dc0a109656fd457a0ce7dbf40419bc8d50936 |
-| File size  | 442'368 bytes                                                   |
+| File size  | 950'784 bytes                                                 |
 | Mime type  | application/x-dosexec                                            |
 | Packed     | Yes                                                             |
 
