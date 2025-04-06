@@ -1,12 +1,12 @@
 title = "About"
 copyright = "&copy; 2024"
-dateFormat = "2 January 2006"
 
 [languages]
   [languages.en]
     languageCode = "en-us"
     languageName = "English (United-States)"
     displayName = ":flag-us:"
+    dateFormat = "2 January 2006"
     isoCode = "en-US"
     weight = 1
     rtl = false
