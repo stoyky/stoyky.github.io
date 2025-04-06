@@ -11,7 +11,7 @@ Taking FrostyGoop to the next level and attacking a simulated sorting machine.
 
 ## Introduction
 
-While analysing the FrostyGoop ICS malware in my previous [blogpost](https://www.remyjaspers.com/blog/frostygoop) I had way too much fun with analyzing the Modbus TCP protocol and its security (or lack thereof). Not being able to use the timing and automating bit of the malware haunted me and I wanted to fully understand it. Shoutout to Nozomi for their awesome [writeup]((https://www.nozominetworks.com/blog/protecting-against-frostygoop-bustleberm-malware)) of the malware. They were able to reverse engineer the task_test.json file which I was still figuring out. 
+While analysing the FrostyGoop ICS malware in my previous [blogpost](https://www.remyjaspers.com/blog/frostygoop) I had way too much fun with analyzing the Modbus TCP protocol and its security (or lack thereof). Not being able to use the timing and automating bit of the malware haunted me and I wanted to fully understand it. Shoutout to Nozomi for their awesome [writeup](https://www.nozominetworks.com/blog/protecting-against-frostygoop-bustleberm-malware) of the malware. They were able to reverse engineer the task_test.json file which I was still figuring out. 
 
 Armed with this knowledge, I wanted to take this malware and experimentation with unauthenticated Modbus to the next level. I experimented some more with the timing commands until I got them to work. 
 

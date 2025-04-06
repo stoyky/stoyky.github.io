@@ -51,10 +51,12 @@ sharing:
   pinterest: "Pin lên Pinterest"
   reddit: "Gửi lên Reddit"
   twitter: "Tweet lên Twitter"
+  # threads: "Post on Threads"
   telegram: "Chia sẻ lên Telegram"
   line: "Chia sẻ lên LINE"
   weibo: "Chia sẻ lên Weibo"
   x-twitter: "Đăng lên X"
+  # xing: "Share on XING"
 
 shortcode:
   recent_articles: "Gần đây"

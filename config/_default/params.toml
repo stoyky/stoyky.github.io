@@ -9,16 +9,19 @@ colorScheme = "ocean"
 defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = true
 
-enableSearch = false
+enableSearch = true
 enableCodeCopy = true
+enableImageLazyLoading = true
 enableImageWebp = true
+enableQuicklink = true
 
-mainSections = ["blog"]
 # robots = ""
+fingerprintAlgorithm = "sha256"
 
 [header]
-  layout = "basic" # valid options: basic, hamburger, hybrid, custom
-# logo = "img/logo.jpg"
+  layout = "hybrid" # valid options: basic, hamburger, hybrid, custom
+  # logo = "img/logo.jpg"
+  # logoDark = "img/dark-logo.jpg"
   showTitle = true
 
 [footer]
@@ -33,7 +36,7 @@ mainSections = ["blog"]
   recentLimit = 20
 
 [article]
-  showDate = false
+  showDate = true
   showDateUpdated = false
   showAuthor = true
   showBreadcrumbs = true
@@ -44,12 +47,12 @@ mainSections = ["blog"]
   showHeadingAnchors = true
   showPagination = true
   invertPagination = false
-  showReadingTime = false
+  showReadingTime = true
   showTableOfContents = true
   showTaxonomies = false
   showWordCount = false
   showComments = false
-  # sharingLinks = ["facebook", "twitter", "pinterest", "reddit", "linkedin", "email"]
+  # sharingLinks = ["facebook", "x-twitter", "mastodon", "pinterest", "reddit", "linkedin", "email", "threads", "telegram", "line", "weibo", "xing"]
 
 [list]
   showBreadcrumbs = true
@@ -67,7 +70,10 @@ mainSections = ["blog"]
 
 [fathomAnalytics]
   # site = "ABC12345"
-  # domain = "llama.yoursite.com"
+
+#[umamiAnalytics]
+#  site = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+#  region = "eu"  # Can be either "eu" or "us"
 
 [verification]
   # google = ""

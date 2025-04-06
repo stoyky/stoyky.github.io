@@ -51,10 +51,12 @@ sharing:
   pinterest: "Fäst på Pinterest"
   reddit: "Publicera på Reddit"
   twitter: "Twittra på Twitter"
+  # threads: "Post on Threads"
   telegram: "Dela på Telegram"
   line: "Dela på LINE"
   weibo: "Dela på Weibo"
   x-twitter: "Publicera på X"
+  # xing: "Share on XING"
 
 shortcode:
   recent_articles: "Senaste"
