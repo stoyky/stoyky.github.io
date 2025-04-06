@@ -32,7 +32,7 @@ The MITRE ATT&CK provides a knowledge base for adversarial tactics, techniques a
 Let me show how to set up the MCP server with ClaudeAI and some use cases that this server enables. 
 
 ## Setup
-I have mainly tested this with the [Claude AI Desktop](https://claude.ai/download) app on Windows 11, and also with the [Debian Claude Desktop](https://github.com/emsi/claude-desktop) app on Debian 12. Once more LLMs start properly supporting MCP, I will experiment more and update the code. 
+The project can be found on [Github](https://github.com/stoyky/mitre-attack-mcp). I have mainly tested this with the [Claude AI Desktop](https://claude.ai/download) app on Windows 11, and also with the [Debian Claude Desktop](https://github.com/emsi/claude-desktop) app on Debian 12. Once more LLMs start properly supporting MCP, I will experiment more and update the code. 
 
 ### Installation steps
 1. git clone https://github.com/stoyky/mitre-attack-mcp
