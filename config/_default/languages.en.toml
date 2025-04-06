@@ -13,7 +13,7 @@ copyright = "&copy; 2024"
    
 [author]
   name = "Remy Jaspers"
-  image = "img/author.jpg"
+  image = "img/author.png"
   headline = "CTI / DFIR / Malware / Data Science Aficionado"
   links = [
     { linkedin = "https://www.linkedin.com/in/remyjaspers/" },
