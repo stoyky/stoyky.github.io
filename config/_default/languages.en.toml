@@ -1,22 +1,24 @@
-title = "About"
-copyright = "&copy; 2024"
+languageCode = "en-AU"
+languageName = "English (Australia)"
+languageDirection = "ltr"
+weight = 1
 
-[languages]
-  [languages.en]
-    languageCode = "en-us"
-    languageName = "English (United-States)"
-    displayName = ":flag-us:"
-    dateFormat = "2 January 2006"
-    isoCode = "en-US"
-    weight = 1
-    rtl = false
-   
-[author]
+title = "Home"
+copyright = "&copy; 2025 Remy Jaspers"
+
+[params]
+  dateFormat = "2 January 2006"
+
+  mainSections = ["blog"]
+  description = ""
+
+[params.author]
   name = "Remy Jaspers"
   image = "img/author.png"
   headline = "CTI / DFIR / Malware / Data Science Aficionado"
+  # bio = "This is an example author bio, and although there's a stock photo of a dog here, this article was actually created by a human. :dog:"
   links = [
+    { github = "https://github.com/stoyky" },
     { linkedin = "https://www.linkedin.com/in/remyjaspers/" },
-    { twitter = "https://twitter.com/st0yky" },
+    { x-twitter = "https://twitter.com/st0yky" },
   ]
-
