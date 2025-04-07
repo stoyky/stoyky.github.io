@@ -1,11 +1,10 @@
 ---
 title: "PMAT Challenge 2: SikoMode"
 description: SikoMode
+summary: Second challenge of the TCM Academy Practical Malware Analysis and Triage course.
 draft: false
 tags: ["cyber security", "malware analysis"]
 ---
-
-Second challenge of the TCM Academy Practical Malware Analysis and Triage course.
 
 ## Introduction
 

@@ -1,13 +1,12 @@
 ---
-title: "Functional Analysis of FrostyGoop ICS Malware pt. 2/2"
+title: Functional Analysis of FrostyGoop ICS Malware pt. 2/2
 description: Playing around with FrostyGoop
+summary: Taking FrostyGoop to the next level and attacking a simulated sorting machine.
 draft: false
 date: 2024-07-28T09:00:00+01:00
 publishDate: 2024-07-28T09:00:00+01:00
 tags: ["cyber security", "malware", "analysis", "functional", "stuxnet", "havex", "industroyer", "reverse engineering", "ICS", "OT", "FactoryIO", "hacking", "frostygoop"]
 ---
-
-Taking FrostyGoop to the next level and attacking a simulated sorting machine.
 
 ## Introduction
 

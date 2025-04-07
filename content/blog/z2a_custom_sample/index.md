@@ -1,13 +1,12 @@
 ---
 title: "Zero2Automated Custom Cruloader Sample Analysis"
 description: Reverse engineering the Zero2Auto Malware Analysis course custom sample
+summary: Analyzing the Zero2Automated Course Cruloader custom sample.
 draft: false
 date: 2024-10-09T09:00:00+01:00
 publishDate: 2024-10-09T09:00:00+01:00
 tags: ["malware", "analysis", "zero2auto", "custom sample", "cruloader"]
 ---
-
-Analyzing the Zero2Automated Course Cruloader custom sample.
 
 ## Introduction
 

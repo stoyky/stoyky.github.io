@@ -1,6 +1,7 @@
 ---
 title: "Fuzzing FreeImage to uncover vulnerabilities"
 description: Fuzzing freeimage
+summary: Fuzzing FreeImage with American Fuzzy Lop in the hope to uncover vulnerabilities.
 draft: false
 tags: ["cyber security", "fuzzing"]
 ---

@@ -1,13 +1,12 @@
 ---
 title: "Zero2Automated Biweekly Challenge: Oski Stealer"
 description: Reverse engineering the Zero2Auto Malware Analysis course custom sample
+summary: Analyzing the Oski Stealer.
 draft: false
 date: 2024-10-09T11:00:00+01:00
 publishDate: 2024-10-10T09:00:00+01:00
 tags: ["malware", "analysis", "zero2auto", "custom sample", "cruloader", "oski stealer"]
 ---
-
-Analyzing the Oski Stealer.
 
 ## Introduction
 

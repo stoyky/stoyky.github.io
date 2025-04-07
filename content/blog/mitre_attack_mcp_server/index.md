@@ -1,15 +1,12 @@
 ---
 title: "MITRE ATT&CK MCP Server"
 description: Supercharging LLM's with the MITRE ATT&CK knowledgebase
+summary: Supercharging LLMs with the MITRE ATT&CK knowledgebase.
 draft: false
 date: 2025-04-05T11:00:00+01:00
 publishDate: 2024-10-10T09:00:00+01:00
 tags: ["llm", "mcp", "server", "mitre", "attack", "att&ck"]
 ---
-
-Supercharging LLMs with the MITRE ATT&CK knowledgebase.
-
-
 
 ## Introduction
 
@@ -73,12 +70,13 @@ If all goes well, you should now have around 50 mitre-attack tools available for
 ## Use Cases
 Now let's look at some use cases for this MCP server, to see what it is capable of answering. *Note: the GIFs may take a while to load*. 
 ### General question answering
-The following question is provided to see if Claude can infer what the "ShellTea" malware is 
+The following question is provided to see if Claude can infer what the "ShellTea" malware is and what tools it uses to find the right malware in the knowledge base:
 
 > What do you know about ShellTea malware?
 
-and what tools it uses to find the right malware in the knowledge base. Notice how it uses the *get_software_by_alias* tool to find the right malware (the main alias is [PUNCHBUGGY](https://attack.mitre.org/software/S0196/)). Claude also infers that it is attributed to the [FIN8](https://attack.mitre.org/groups/G0061/) group by the *get_object_by_content* tool. 
 ![](img/shelltea.gif)
+
+Notice how it uses the *get_software_by_alias* tool to find the right malware (the main alias is [PUNCHBUGGY](https://attack.mitre.org/software/S0196/)). Claude also infers that it is attributed to the [FIN8](https://attack.mitre.org/groups/G0061/) group by the *get_object_by_content* tool. 
 
 ### Finding Specifics
 Some campaigns have references in their description that suggest overlap with certain threat actor groups, but might not be explicitly attributed to them. 

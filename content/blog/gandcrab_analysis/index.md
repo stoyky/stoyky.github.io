@@ -1,11 +1,10 @@
 ---
 title: "An Analysis Of the GandCrab V2 Ransomware"
 description: Gandcrab V2 Analysis
+summary: In a university assignment, I was tasked with reversing GandCrab malware.
 draft: false
 tags: ["cyber security", "malware analysis"]
 ---
-
-In a university assignment, I was tasked with reversing GandCrab malware.
 
 ## Introduction
 
