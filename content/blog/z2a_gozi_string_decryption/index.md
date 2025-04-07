@@ -1,13 +1,12 @@
 ---
 title: "Zero2Automated Biweekly Challenge: Gozi Banking Trojan"
 description: Reverse engineering the Zero2Auto Malware Analysis course custom sample
+summary: Analyzing the Gozi ISFB banking trojan.
 draft: false
 date: 2024-10-09T10:00:00+01:00
 publishDate: 2024-10-10T09:00:00+01:00
 tags: ["malware", "analysis", "zero2auto", "custom sample", "cruloader"]
 ---
-
-Analyzing the Gozi ISFB banking trojan.
 
 ## Introduction
 

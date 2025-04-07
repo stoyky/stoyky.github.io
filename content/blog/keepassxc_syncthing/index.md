@@ -1,10 +1,9 @@
 ---
 title: "KeepassXC + SyncThing = :heart:"
 description: How to synchronize a KeepassXC database across devices.
+summary: Learn how to use SyncThing to synchronize KeepassXC databases across devices and regain ownership of your data.
 tags: ["cyber security", "password management"]
 ---
-
-Learn how to use SyncThing to synchronize KeepassXC databases across devices and regain ownership of your data.
 
 ## Introduction
 

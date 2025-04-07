@@ -1,13 +1,12 @@
 ---
 title: "Connecting OpenCTI to a Large Language Model pt. 1/2: Leveraging the Ask AI feature"
-description: How to hook OpenCTI to a LLM
+description: How to connect OpenCTI to a LLM
+summary: Setting up OpenCTI and the Ask AI service, with a cloud or locally served LLM.
 draft: false
 date: 2024-10-09T11:00:00+01:00
 publishDate: 2024-10-09T09:00:00+01:00
 tags: ["cyber security", "malware", "analysis", "opencti", "ask ai", "llm", "data science", "machine learning", "deep learning", "large language models", "ollama"]
 ---
-
-Setting up OpenCTI and the Ask AI service, with a cloud or locally served LLM.
 
 ## Introduction
 

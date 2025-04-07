@@ -1,14 +1,12 @@
 ---
 title: "Accurate Animation-Based C++ Melee Tracing in Unreal Engine 5"
 description: Melee Tracing
+summary: How to implement accurate melee tracing in Unreal Engine 5, as a prototype that brings together multiple concepts of game development. 
 draft: false
 date: 2018-07-25T09:00:00+01:00
 publishDate: 2018-07-25T09:00:00+01:00
 tags: ["game dev"]
 ---
-
-How to implement accurate melee tracing in Unreal Engine 5, as a prototype
-that brings together multiple concepts of game development. 
 
 ## Introduction
 

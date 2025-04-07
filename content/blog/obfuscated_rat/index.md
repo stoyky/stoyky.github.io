@@ -1,13 +1,12 @@
 ---
 title: "CTF Challenge: Obfuscated RAT"
 description: String decryption of RADX Rat
+summary: Writing a string decrypter for an obfuscated RAT during a CTF challenge.
 draft: false
 date: 2024-09-07T09:00:00+01:00
 publishDate: 2024-09-07T09:00:00+01:00
 tags: ["cyber security", "malware", "analysis", "reverse engineering", "hacking", "frostygoop"]
 ---
-
-Writing a string decrypter for an obfuscated RAT during a CTF challenge.
 
 [Image Source](https://www.freepik.com/free-ai-image/futuristic-style-possum-wearing-armor_94941490.htm#fromView=search&page=1&position=18&uuid=2a7451d4-cee6-4371-8156-b1bd1845e987)
 

@@ -1,6 +1,7 @@
 ---
 title: "Connecting OpenCTI to a Large Language Model pt. 2/2: OpenCTI as a Knowledge Base for a Question Answering System"
 description: How to hook OpenCTI to a LLM
+summary: Creating a Question Answering system with a LLM and Retrieval Augmented Generation (RAG).
 draft: false
 date: 2024-12-09T09:00:00+01:00
 publishDate: 2024-12-08T09:00:00+01:00
