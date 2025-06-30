@@ -1,9 +1,9 @@
 ---
 title: "Unbricking a TP-Link Archer C9 Router over Serial"
-description: Analysis of FrostyGoop
+description: Flashing TP-Link Archer C9 Router firmware to unbrick it
 summary: Flashing TP-Link Archer C9 Router firmware to unbrick it
 draft: false
-date: 2024-10-09T12:00:00+01:00
+date: 2025-05-01T12:00:00+01:00
 publishDate: 2024-10-10T12:00:00+01:00
 tags: ["cyber security", "hacking", "hardware", "tp-link", "archer c9", "archer c1900", "serial", "uart"]
 ---
