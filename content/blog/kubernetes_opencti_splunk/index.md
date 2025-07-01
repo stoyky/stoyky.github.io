@@ -11,12 +11,17 @@ tags: ["kubernetes", "opencti", "k8s", "minikube", "connectors"]
 
 ## Introduction
 
-For a while I have been playing around with an OpenCTI deployment as homelab using Docker. However, when it comes to container orchestration I always wanted to have a good reason to play around with Kubernetes and now felt like spinning up a single-node local OpenCTI instance for development purposes. As I encounter Splunk a lot in my work, I wanted to learn how to integrate OpenCTI and Splunk. Tearing down and spinning up Docker containers by hand whenever any of my experiments fail is not particularly efficient. So, instead, let us deploy an OpenCTI and Splunk instance, orchestrated by Kubernetes. This way, we can learn to configure OpenCTI, develop or customize connectors, and also get a feeling for how to integrate OpenCTI with Splunk to consume IOC's and receive sightings!
+For a while I have been playing around with an OpenCTI homelab using Docker. However, when it comes to container orchestration I always wanted to have a good reason to play around with Kubernetes and wanted to learn how to deploy OpenCTI in a more scalable manner. As I encounter Splunk a lot in my work, I also wanted to learn how to integrate OpenCTI and Splunk. Tearing down and spinning up Docker containers by hand whenever any of my experiments fail is not particularly efficient. 
+
+So, instead, let us deploy an OpenCTI and Splunk instance, orchestrated by Kubernetes. This way, we can learn to configure OpenCTI, develop or customize connectors, and also get a feeling for how to integrate OpenCTI with Splunk to consume IOC's and send any hits back to the TIP!
 
 ## Minikube + Docker Engine
-For the containerization backend, I chose to use Docker Engine. Depending on your platform (I'm on Debian 12), follow the guide [here](https://docs.docker.com/engine/install). For learning and development purposes I chose Minikube as it seemed to be the best out of all alternatives. For installation instructions, see [this page](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download). Also, make sure you install [Helm](https://helm.sh/docs/intro/install/) to simplify deployment of the charts. 
+#### Note: If you already have a K8s cluster up and running, feel free to skip this section.
+For the containerization backend, I chose to use Docker Engine. Depending on your platform (I'm on Debian 12), follow the guide [here](https://docs.docker.com/engine/install). For learning and development purposes I chose Minikube to administer my cluster as it seemed to be the best out of all alternatives. For installation instructions, see [this page](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download). Also, make sure you install [Helm](https://helm.sh/docs/intro/install/) to simplify deployment of the charts. 
 
-For  the sake of brevity, I will not go into installing Docker, Minikube or Helm as this process is pretty straightforward. Once Minikube is installed, make sure to start it and specify Docker as the driver:
+For  the sake of brevity, I will not go into installing Docker, Minikube or Helm as this process is pretty straightforward. 
+
+Once Minikube is installed, make sure to start it and specify Docker as the driver:
 
 ```bash
 minikube start --driver=docker
@@ -26,11 +31,11 @@ After a while, you should hopefully see that Minikube has been started succesful
 
 ![](img/minikube_start.png)
 
-All your pods should be in the Running state
+All your pods should be in the Running state:
 
 ![](img/running_pods.png)
 
-### Optional: Run Kubernetes Dashboard
+### Optional: Kubernetes Dashboard
 To have a nice overview of the cluster, I like to use the Kubernetes dashboard. It can be installed, started and accessed as follows:
 
 ```bash
@@ -167,28 +172,30 @@ helm repo update
 
 Now, issue the following command to deploy OpenCTI. We are providing the values defined above to configure the deployment.
 Sometimes it is necessary to specify the *--version* flag to make sure all components (core and connectors) run the same version of the OpenCTI platform,
-i.e. 6.7.0. To check which Helm chart release coincides with which version of OpenCTI, check the [Github releases](https://github.com/devops-ia/helm-opencti/releases). This flag ensures no pods start running together with different versions of the platform. You can choose any name for your deployment release,
+(i.e. version 6.7.0). 
+
+To check which Helm Chart release coincides with which particular version of OpenCTI, check the [Github releases](https://github.com/devops-ia/helm-opencti/releases) page. In this article, I'm using version 1.11.3 of the Chart, which coincides with version 6.6.18, but newer versions are released frequently. The *--version* flag ensures no pods start running together with different versions of the platform. You can choose any release name for your deployment,
 but I'm just going with *opencti*.
 
 ```
-helm install -f values.yaml <RELEASE_NAME> opencti/opencti --version 1.11.5
+helm install -f values.yaml <RELEASE_NAME> opencti/opencti --version 1.11.3
 ```
 
-After a good 5-10 minutes, OpenCTI will be fully ready. On my setup, the worker pod usually starts last, and is a good indicator that the platform is up and running. 
+After a good 5-10 minutes, OpenCTI will be fully ready. On my setup, the worker pod usually starts last, and is a good indicator that the platform is fully up and running. 
 
 ![](img/pods_dashboard.png)
 
-To access OpenCTI, we need to port-forward the opencti-server pod, as such:
+To access OpenCTI, we need to port-forward to the opencti-server pod, as such:
 
 ```
 kubectl port-forward <opencti-server pod name>  8080:4000
 ```
 
-If all went well, OpenCTI will now be accessible on *http://localhost:8080*:
+If all went well, OpenCTI will now be accessible on *http://localhost:8080* from your host machine:
 
 ![](img/opencti.png)
 
-## Deploying Connectors
+### Deploying Connectors
 
 To get some useful data in, we can choose form a plethora of [connectors](https://github.com/OpenCTI-Platform/connectors), provided by OpenCTI or the community. Let's try to add the default [OpenCTI connector](https://github.com/OpenCTI-Platform/connectors/tree/master/external-import/opencti) that populates the platform with some data about sectors, organizations and locations. To this end, we specify an additional *connectors.yaml* file that holds all the connector configurations, with the following content:
 
@@ -220,6 +227,7 @@ connectors:
       memory: 128Mi
 
 ```
+For other connectors, be sure to also check the [connector examples](https://github.com/devops-ia/helm-opencti/tree/main/charts/opencti/connector-examples) provided along with the OpenCTI Helm Chart.
 
 Now upgrade the existing release with the added connectors (while keeping the original values):
 
@@ -275,7 +283,7 @@ We should now get some indicators in the platform:
 
 ![](img/indicators.png)
 
-### Bonus: Customizing Connectors
+#### Bonus: Customizing Connectors
 
 Downloading connectors from an existing repo is great, but sometimes you need to troubleshoot the connector or modify the connector to suit your needs. For this to work, we need to be able to build our own connectors and push them to the Docker registry. 
 
@@ -380,7 +388,7 @@ You will get the following output, and need to use the password entry to login a
 
 Congratulations, we now have OpenCTI and Splunk up and running. Time to integrate the two!
 
-## Deploying Splunk OpenCTI Add-On
+### Deploying Splunk OpenCTI Add-On
 Before you install the OpenCTI Add-On from the Splunk Apps Browser, we need to make a minor adjustment such that it accepts an HTTP URL rather than only HTTPS in the configuration. First, clone the add-on from [this Github repo](https://github.com/OpenCTI-Platform/splunk-add-on). 
 
 In the *TA-opencti-add-on > bin* folder, edit *TA_opencti_add_on_rh_settings.py*. We need to modify the regex used to validate the OpenCTI instance URL. Around line 100, replace "http" with "https". 
@@ -439,7 +447,7 @@ Under Trigger Actions add "OpenCTI - Create Incident" with the following setting
 ![](img/trigger-actions.png)
 
 {{< alert >}}
-**Warning:** To make the $result.fieldname$ syntax work, avoid the use of [Splunk Transforming commands](https://docs.splunk.com/Splexicon:Transformingcommand) in your search, for if you use these, the action silently fails and no incidents will be sent!
+**Warning:** To make the $result.fieldname$ syntax work, avoid the use of [Splunk Transforming commands](https://docs.splunk.com/Splexicon:Transformingcommand) in your search, for if you use these, the action silently fails and no incidents will be sent! Many thanks to the colleague who pointed this out to me!
 {{< /alert >}}
 
 Now head over to OpenCTI *Events > Incidents* and check out the newly created incidents!
@@ -448,11 +456,11 @@ Now head over to OpenCTI *Events > Incidents* and check out the newly created in
 
 ![](img/opencti-incident-details.png)
 
-Happy developing!
+Now we have closed the loop between the TIP and the SIEM, which allows to develop detection logic for the indicators, build dashboards, experiment with connectors, and taking any hits back to the TIP for further investigation.
 
 ## Conclusion
 
 Kubernetes is great for experimenting and quickly setting up labs like these. Seeing how smoothly two platforms integrate like this makes me very happy.
 
-That's it for now, thanks for sticking with me until the end, and as always,
-please do not hesitate to contact me with any questions. 
+That's it for now, thanks for sticking with me until the end with this quite lengthy article, and as always,
+please do not hesitate to contact me with any questions or suggestions. Have a good one!
