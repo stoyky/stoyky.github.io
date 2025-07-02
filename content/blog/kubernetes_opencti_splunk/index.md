@@ -460,7 +460,7 @@ Now we have closed the loop between the TIP and the SIEM, which allows to develo
 
 ## Conclusion
 
-Kubernetes is great for experimenting and quickly setting up labs like these. Seeing how smoothly two platforms integrate like this makes me very happy.
+Kubernetes is great for experimenting and quickly setting up labs like these. Seeing how smoothly two platforms integrate like this makes me very happy. For the full configuration files, please see this [Github repo](https://github.com/stoyky/k8s_opencti_splunk_lab.git).
 
 That's it for now, thanks for sticking with me until the end with this quite lengthy article, and as always,
 please do not hesitate to contact me with any questions or suggestions. Have a good one!
