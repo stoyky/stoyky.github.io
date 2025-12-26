@@ -85,7 +85,7 @@ ConsoleWrite($pyytlpgf)
 This should dump the string out to the SciTE console. We can now copy this string out and convert it to proper shellcode using Cyberchef or whatever method you prefer, and use a disassembler / decompiler such as Ghidra or IDA to further inspect the payload.
 
 Let's move on to a sample that is a little more involved.
-## Example 2: Extracting Lumma Stealer Payload
+## Example 2: Extracting A Lumma Stealer Payload
 This [article](https://securelist.com/lumma-fake-captcha-attacks-analysis/116274/) from Kaspersky explains how Lumma Stealer spreads through fake CAPTCHA pages and the ClickFix technique to ultimately deliver the stealer. After a convoluted chain of MSHTA / Powershell commands, multiple obfuscated Powershell scripts, .mp3/.mp4 files, Javascript, and some more Powershell scripts, a binary is dropped that masquerades itself as a legitimate application. This seemingly legitimate application contains an AutoIT executable to execute a malicious compiled AutoIT script.  
 
 Let's consider [this sample](https://www.virustotal.com/gui/file/ce5dc59119d58149aaa850be86222c7b8d798f21f8e7c44fc081f7a357562068/) with SHA256: *ce5dc59119d58149aaa850be86222c7b8d798f21f8e7c44fc081f7a357562068*. 
