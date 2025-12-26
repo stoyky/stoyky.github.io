@@ -3,12 +3,10 @@ title: "Debugging malicious AutoIT scripts"
 description: Some tips and tricks to deal with pesky AutoIT scripts
 summary: Debugging malicious AutoIT scripts
 draft: false
-date: 2025-06-30T12:00:00+01:00
+date: 2025-12-26T12:00:00+01:00
 publishDate: 2024-10-10T12:00:00+01:00
-tags: ["autoit", "reverse engineering", "malware"]
+tags: ["autoit", "reverse engineering", "malware", "lumma", "quasar rat"]
 ---
-
-[Image Source](https://www.autoitscript.com/site/wp-content/uploads/2018/01/AutoIt_Featured_640x480.png)
 
 ## Introduction
 
