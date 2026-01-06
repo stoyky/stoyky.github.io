@@ -1,7 +1,7 @@
 ---
-title: "Debugging malicious AutoIT scripts"
+title: "Hands-On Guide to Debugging Obfuscated AutoIt Malware"
 description: Some tips and tricks to deal with pesky AutoIT scripts
-summary: Debugging malicious AutoIT scripts
+summary: "Hands-On Guide to Debugging Obfuscated AutoIt Malware"
 draft: false
 date: 2025-12-26T12:00:00+01:00
 publishDate: 2024-10-10T12:00:00+01:00
