@@ -261,8 +261,9 @@ Right-click the "hostonly" -> IPv4 settings and ensure the DNS server and gatewa
 ![Win 10 IPv4](img/win10-ipv4.png)
 
 #### Windows 11
-Go to "Manage Network Adapters settings" and disable the "nat" adapter. You can verify the DNS server and gateway settings by expanding the adapter and clicking "View additional info". 
+Go to "Manage Network Adapters settings" and disable the "nat" adapter. You can verify the DNS server and gateway settings by expanding the adapter and clicking "View additional properties". 
 ![Windows 11 Disable Nat Adapter](img/win11-netcfg.png)
+![](img/win11-netcfg-addprops.png)
 
 #### Testing Host-only Connectivity
 
