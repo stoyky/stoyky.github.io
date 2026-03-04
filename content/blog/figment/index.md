@@ -1,5 +1,5 @@
 ---
-title: "Figment: Accelerate Malware Analysis with Prebuilt FlareVM and REMnux boxes"
+title: "Figment: Accelerate Malware Analysis with Prebuilt FlareVM and REMnux Boxes"
 description: Prebuilt FlareVM and REMnux Vagrant Boxes, with Packer + Ansible Templates For Customization
 summary: Prebuilt FlareVM and REMnux Vagrant Boxes, with Packer + Ansible templates for customization
 draft: false
@@ -20,7 +20,26 @@ In this blog post I will provide a more visual guide on how to run the prebuilt 
 
 The quickest way to get started is to use the prebuilt Vagrant boxes. This is particularly the case for Windows users, as Ansible cannot really be used on Windows properly to customize the boxes. The Vagrant boxes come with all the installed tools and upgrades out of the box. You can adjust VM settings by editing the corresponding Vagrantfile. 
 
-### Prerequisites
+### The Lazy Way
+
+If you don't care to install Vagrant, you can simply download the box file for the respective box you want to import into your hypervisor. These box files are just compressed OVF/VMX files and disk VMDK files. Take the FlareVM Windows 10 box for example:
+
+https://portal.cloud.hashicorp.com/vagrant/discover/figment/flarevm-win10
+
+![](img/vagrant-download.png)
+
+Hit the download button to download the box, and rename the file to flarevm-win10-vmware.box. Extract it twice until you are left with two folders, one containing the metadata (OVF/VMX) and one containing the disk file (VMDK). 
+
+![](img/extract-box.png)
+
+![](img/extract-box2.png)
+
+Copy the disk VMDK file to the folder containing the metadata OVF/VMX files. 
+
+![](img/copy-disk.png)
+
+You can now simply double click the OVF/VMX file to import the VM and you should be good to go. 
+### Using Vagrant
 In this post, I'm assuming you have installed Vagrant as well as the necessary utilities / plugins, for instance the VMWare Plugin and the [Vagrant VMWare Utility](https://developer.hashicorp.com/vagrant/install/vmware). 
 
 ```bash 
