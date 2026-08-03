@@ -145,7 +145,7 @@ After uploading succeeds, open up **virt-manager** so you can inspect the nested
 A timelapse video of this process can be found below:
 
 <video controls width="100%">
-  <source src="/blog/figment2/vid/figment_final_lossless.mp4" type="video/mp4">
+  <source src="https://github.com/stoyky/stoyky.github.io/raw/refs/heads/master/content/blog/figment2/vid/figment_final_lossless.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
