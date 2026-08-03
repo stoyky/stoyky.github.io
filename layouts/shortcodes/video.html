@@ -1,0 +1,6 @@
+{{ with resources.Get (.Get "src") }}
+  <video controls width="100%">
+    <source src="{{ .RelPermalink }}" type="video/mp4">
+        Your browser does not support the video tag.
+  </video>
+{{ end }}

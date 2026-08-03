@@ -46,7 +46,7 @@ In this post, I'm assuming you have installed Vagrant as well as the necessary u
 vagrant plugin install vagrant-vmware-desktop
 ``` 
 
-Let's start by ensuring the settings are correct in the hypervisor. The FlareVM hardcoded IP is *192.168.56.20*, whereas the REMnux hardcoded IP is *192.168.56.10*. It is therefore important to configure your hypervisor to have a host-only network with the range *192.168.56.0/24*. 
+Let's start by ensuring the settings are correct in the hypervisor. The FlareVM hardcoded IP is *192.168.55.20*, whereas the REMnux hardcoded IP is *192.168.55.10*. It is therefore important to configure your hypervisor to have a host-only network with the range *192.168.55.0/24*. 
 
 #### VMware
 
@@ -142,7 +142,7 @@ Before continuing, let's ensure the NAT adapter is disabled. Open up a console a
 ip a
 ```
 
-Disable the interface with the IP other than 192.168.56.10, in this case *ens33*.
+Disable the interface with the IP other than 192.168.55.10, in this case *ens33*.
 
 ```bash
 sudo ip link set ens33 down
@@ -150,9 +150,9 @@ sudo ip link set ens33 down
 
 ![IP Link down](img/iplinkdown.png)
 
-And run *ip a* again to ensure only the interface with IP 192.168.56.10 has state UP. 
+And run *ip a* again to ensure only the interface with IP 192.168.55.10 has state UP. 
 
-Now open a terminal window and run *inetsim*. Ensure it is listening on 192.168.56.10:
+Now open a terminal window and run *inetsim*. Ensure it is listening on 192.168.55.10:
 
 ![inetsim](img/inetsim.png)
 
@@ -298,9 +298,9 @@ vm_name        = "flarevm"
 disk_size      = 60000
 
 # Network Configuration
-hostonly_ip             = "192.168.56.20"
-default_gateway         = "192.168.56.10"
-dns_ip                  = "192.168.56.10"
+hostonly_ip             = "192.168.55.20"
+default_gateway         = "192.168.55.10"
+dns_ip                  = "192.168.55.10"
 ethernet0_pcislotnumber = "33"
 ethernet1_pcislotnumber = "36"
 
