@@ -122,7 +122,7 @@ vagrant up --provider=vmware_desktop --provision
 
 The video below shows a sped-up timelapse of this command setting up the box. After the box is up, login with **ubuntu:password**, and then browse to 
 
-```
+```bash
 localhost:8000
 ```
 
@@ -132,7 +132,7 @@ to access the CAPEv2 Web GUI.
 
 Navigate to the Submit tab to submit testing malware. The testing malware Pafish / Pafish64 can be found in the ~/Downloads folder under the home directory:
 
-```
+```bash
 /home/ubuntu/Downloads/
 ```
 
@@ -153,11 +153,11 @@ A timelapse video of this process can be found below:
 
 The Packer templates are provided to ensure you can build CAPE yourself. First review the most important parts: 
 
-```
+```bash
 cape-server.pkr.hcl 
 ```
 and
-```
+```bash
 cape-server.pkrvars.hcl
 ``` 
 
@@ -302,7 +302,7 @@ Finally, by changing the settings below, you can specify the types of guests you
 **Note**: I have experimented with older OS versions such as Windows 7, as well as with Linux, but no success on the current commits. I will try again in due time. 
 
 You can specify the settings and number of replicas to increase throughput of the VMs. These will be copied to the cuckoo.conf file. The *mac_base_hostonly* and *mac_base_nat* will be used to automatically assign network interfaces to these VMs. Specify the *hostonly_offset* to ensure there is no overlap when adding multiple replicas close on the same network range. 
-```
+```hcl
 cape_guests = [
   {
     name              = "cape-guest-win10"
@@ -329,7 +329,7 @@ Note that considerable effort has been made into assigning consistent network in
 
 Finally, building the box should be as simple as navigating back to the root folder and creating a venv:
 
-```
+```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -355,7 +355,7 @@ Note how I was able to also build the VM in *under 30 minutes*. Can't beat that,
 
 Should you have any issues with uploading samples or analysis VMs that won't spin up, please review the log output of the cape user for more information.
 
-```
+```bash
 journactl -f -u cape
 ```
 
@@ -369,7 +369,7 @@ Jul 31 08:02:45 cape-server poetry[10253]: 2026-07-31 08:02:45,768 [lib.cuckoo.c
 
 The config files can be found under
 
-```
+```bash
 /opt/CAPEv2/conf/
 ```
 
