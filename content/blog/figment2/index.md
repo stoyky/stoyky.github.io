@@ -254,6 +254,15 @@ cape_guests = [
     hostonly_offset   = 151
     mac_base_hostonly = "52:54:00:20:30"
     mac_base_nat      = "52:54:00:30:20"
+  },
+  {
+    name              = "cape-guest-ubuntu"
+    platform          = "linux"
+    arch              = "x64"
+    replicas          = 1
+    hostonly_offset   = 201
+    mac_base_hostonly = "52:54:00:30:40"
+    mac_base_nat      = "52:54:00:40:30"
   }
 ]
 
